@@ -55,7 +55,7 @@ class LLaMA_Forward(LLM):
         self.config = config
         self.needs_confirmation = needs_confirmation
         self.disable_tqdm = disable_tqdm
-        self.tokenizer = AutoTokenizer.from_pretrained(config['gpt_config']['model'])
+        self.tokenizer = AutoTokenizer.from_pretrained(config['gpt_config']['model'], return_dict=True, load_in_8bit=True, device_map='auto')
         self.model = AutoModelForCausalLM.from_pretrained(config['gpt_config']['model'])
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model.to(self.device)
