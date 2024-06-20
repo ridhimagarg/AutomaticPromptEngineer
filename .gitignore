@@ -171,3 +171,6 @@ demos/
 
 # Get rid of those pesky .DS_Store files
 .DS_Store
+
+ape_ui.ipynb
+ape_ui.py
