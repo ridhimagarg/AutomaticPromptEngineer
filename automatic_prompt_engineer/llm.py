@@ -155,7 +155,7 @@ class LLaMA_Forward(LLM):
         responses = []
         for p in prompt:
             inputs = self.tokenizer(p, return_tensors="pt").to(self.device)
-            outputs = self.model.generate(**inputs, max_length=config['max_tokens'], num_return_sequences=n)
+            outputs = self.model.generate(**inputs, max_length=30, num_return_sequences=n)
             for i in range(n):
                 response = self.tokenizer.decode(outputs[i], skip_special_tokens=True)
                 responses.append(response)
