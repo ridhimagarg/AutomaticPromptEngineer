@@ -59,7 +59,7 @@ class LLaMA_Forward(LLM):
         self.tokenizer = AutoTokenizer.from_pretrained(config['gpt_config']['model'])
         self.model = AutoModelForCausalLM.from_pretrained(config['gpt_config']['model'], return_dict=True, load_in_8bit=True, device_map='auto')
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.model.to(self.device)
+        # self.model.to(self.device)
 
     def confirm_cost(self, texts, n, max_tokens):
         total_estimated_cost = 0
