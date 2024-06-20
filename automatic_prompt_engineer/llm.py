@@ -75,12 +75,12 @@ class LLaMA_Forward(LLM):
 
     def auto_reduce_n(self, fn, prompt, n):
         """Reduces n by half until the function succeeds."""
-        try:
-            return fn(prompt, n)
-        except BatchSizeException as e:
-            if n == 1:
-                raise e
-            return self.auto_reduce_n(fn, prompt, n // 2) + self.auto_reduce_n(fn, prompt, n // 2)
+        # try:
+        return fn(prompt, n)
+        # except BatchSizeException as e:
+        #     if n == 1:
+        #         raise e
+        #     return self.auto_reduce_n(fn, prompt, n // 2) + self.auto_reduce_n(fn, prompt, n // 2)
 
     def generate_text(self, prompt, n):
         if not isinstance(prompt, list):
